@@ -23,14 +23,19 @@ app.use(cors());
 
 
 
-const port = process.env.PORT;
+const port = process.env.PORT || 9000;
 // connect mongo
 connect();
 
-// app.get('/',(req,res)=>{
-//     res.send('welcome chutiye');
-// });
+// Health check endpoint
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Backend server is running', status: 'ok' });
+});
 
+// API health check
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ message: 'API is healthy', status: 'ok' });
+});
 
 // Api routes 
 app.use('/api/users' ,userRoutes);
@@ -47,6 +52,19 @@ app.use('/api/admin/users',adminRoutes);
 app.use('/api/admin/products',productAdminRoutes);
 app.use('/api/admin/orders',adminOrderRoutes);
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error('Error:', err);
+    const statusCode = err.status || 500;
+    const message = process.env.NODE_ENV === 'production' ? 'Internal server error' : err.message;
+    res.status(statusCode).json({ error: message, status: 'error' });
+});
+
+// 404 handler
+app.use((req, res) => {
+    res.status(404).json({ error: 'Route not found', status: 'error' });
+});
+
 app.listen(port,()=>{
-    console.log(`server is running on port`,port)
-})
+    console.log(`server is running on port ${port}`);
+});
