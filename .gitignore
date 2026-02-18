@@ -1,0 +1,14 @@
+#logs
+logs
+*.logs
+
+#node_modules
+
+frontent/node_modules/
+backend/node_modules/
+
+#env
+
+frontent/.env
+frontent/.env
+
