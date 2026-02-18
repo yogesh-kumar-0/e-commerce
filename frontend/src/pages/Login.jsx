@@ -66,7 +66,7 @@ const Login = () => {
 
             </div>
             <button type='submit' className='w-full bg-black text-white p-2 rounded-lg font-semiboldhover:bg-gray-800 transition'>
-                Sign In
+                
                 {loading ? "loading..." : "Sign In"}
             </button>
             <p className='mt-6 text-center text-sm'>
