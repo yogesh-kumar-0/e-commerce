@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `yogesh-kumar-0/e-commerce` repository provides a comprehensive backend solution for an e-commerce platform. It incorporates user authentication, product management, cart functionality, order processing, payment integration, and administrative controls. The project is organized to support robust e-commerce workflows, making it suitable for both learning and production use. A deployed instance is available at https://yogesh-kumar-0-e-commerce.vercel.app/.
+The `yogesh-kumar-0/e-commerce` repository provides a comprehensive backend solution for an e-commerce platform. It incorporates user authentication, product management, cart functionality, order processing, payment integration, and administrative controls. The project is organized to support robust e-commerce workflows, making it suitable for both learning and production use. A deployed instance is available at https://yogesh-kumar-0-e-commerce-ko4yqo71t.vercel.app/ .
 
 ## Features
 
