@@ -4,7 +4,7 @@ import RazorPayButton from './RazorPayButton';
 import { formattedRupee } from '../../script';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCheckout  } from '../../redux/slice/checkoutSlice';
-import { clearCart } from '../../redux/slice/cartSlice';
+// import { clearCart } from '../../redux/slice/cartSlice';
 import axios from 'axios';
  
 
@@ -87,8 +87,9 @@ const CheckOut = () => {
       )
      
         // Clear cart immediately after successful finalization
-        dispatch(clearCart());
-        localStorage.removeItem("cart");
+
+        // dispatch(clearCart());
+        // localStorage.removeItem("cart");
         navigate("/order-confirmation");
       
     } catch (error) {
@@ -204,9 +205,9 @@ const CheckOut = () => {
               </button>
             ):(
               <div>
-                <h3 className="text-lg mb-4">
+                {/* <h3 className="text-lg mb-4">
                   Pay with Razorpay
-                </h3>
+                </h3> */}
                 {/* Razorpay component */}
                 
                 <RazorPayButton amount={cart.totalPrice} onSuccess={handlePaymentSuccess} 

@@ -67,24 +67,23 @@ export const updateCartItemQuantity = createAsyncThunk('cart/updateCartItemQuant
         }
 );
 
-// remove an item from the cart 
-export const removeFromCart  = createAsyncThunk("cart/removeFromCart",async({
-        productId,quantity,userId,guestId,size,color},{rejectWithValue})=>{
+// remove an item from the cart
+// NOTE: only send productId, size, color, userId, guestId — NOT quantity (backend ignores it)
+export const removeFromCart = createAsyncThunk("cart/removeFromCart", async ({
+        productId, userId, guestId, size, color }, { rejectWithValue }) => {
                 try {
                         const response = await axios({
-                                method:"DELETE",
+                                method: "DELETE",
                                 url: `${import.meta.env.VITE_BACKEND_URL}/api/cart`,
-                                data:{productId,quantity,userId,guestId,size,color},
-
+                                data: { productId, userId, guestId, size, color },
                         });
                         return response.data;
-                        
                 } catch (error) {
-                        console.error("Error removing from cart:",error);
-                        return rejectWithValue(error.response.data);
-                        
+                        console.error("Error removing from cart:", error);
+                        return rejectWithValue(
+                                error.response?.data || { message: error.message || "Failed to remove item from cart" }
+                        );
                 }
-
         }
 );
 

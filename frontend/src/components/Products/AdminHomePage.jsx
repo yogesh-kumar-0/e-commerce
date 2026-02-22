@@ -51,7 +51,7 @@ const AdminHomePage = () => {
                     </Link>
             </div>
         </div>
-    )};
+    )}
       <div className="mt-6 ">
         <h2 className="text-2xl font-bold mb-4">Recent Orders</h2>
         <div className="overflow-x-auto">
@@ -66,7 +66,7 @@ const AdminHomePage = () => {
                 </thead>
                 <tbody>
                     {orders.length>0 ?(
-                        orders.map((order)=>(
+                        orders.slice().reverse().map((order)=>(
                             <tr key={order._id} className='border-b hover:bg-gray-50 cursor-pointer'>
                                 <td className='p-4'>{order._id} </td>
                                 <td className='p-4'>{order.user.name} </td>
